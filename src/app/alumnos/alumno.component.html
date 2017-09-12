@@ -1,0 +1,62 @@
+<!--<h1>{{titulo}}</h1>
+{{nombre}}
+Edad:{{edad}}
+<br>
+Mayor{{mayor==true?'Si':'no'}}
+<br>
+{{comodin}}-->
+<h3>Selector de colores</h3>
+
+<input type="color" [(ngModel)]="color_seleccionado"/>
+<pre [style.border]="'5px solid'" [style.color]="color_seleccionado" [class.backgroundAzul]="true">
+    Color Elegido
+    <strong>{{color_seleccionado}}</strong>
+</pre>
+
+<div [ngStyle]="{
+    'background':color_seleccionado,
+    'width':'200px',
+    'height':'200px',
+    'float':'right',
+    'margin-right':'70%'
+}">
+
+</div>
+<div *ngIf="alumno_Externo">
+        <button (click)="cambiarExterno(false);">Un Alumno</button>
+        <h1>Nombre: {{alumno.nombre}}</h1>
+        <h2>Edad: {{alumno.edad}}</h2>
+        <h3>Cargo: {{alumno.cargo}}</h3>
+        <h3>Contratado {{alumno.contratado==true?'Si':'No'}}</h3>
+</div>
+<div *ngIf="!alumno_Externo">
+        <button (click)="cambiarExterno(true);">Todos Alumno</button>
+        <table>
+            <thead>
+                <th></th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Cargo</th>
+                <th>Contratado</th>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of alumnos;let i=index">
+                    <td>Alumno {{i+1}}</td>
+                    <td>{{a.nombre}}</td>
+                    <td>{{a.edad}}</td>
+                    <td>{{a.cargo}}</td>
+                    <td>{{a.contratado==true?'Si':'No'}}</td>
+            
+                </tr>
+            </tbody>
+        </table>
+</div>
+<hr>
+<ul [ngSwitch]="colores">
+    <li *ngSwitchCase="'red'" [ngStyle]="{color:colores}"> Este es rojo</li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{color:colores}"> Este es verde</li>
+    <li *ngSwitchCase="'blue'" [ngStyle]="{color:colores}"> Este es azul</li>
+</ul>
+
+<!---->
